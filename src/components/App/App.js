@@ -9,6 +9,7 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import LearningRoute from '../../routes/LearningRoute/LearningRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
+import { LanguageProvider } from '../../contexts/LanguageContext'
 
 export default class App extends Component {
   state = { hasError: false }
@@ -27,28 +28,30 @@ export default class App extends Component {
           {hasError && (
             <p>There was an error! Oh no!</p>
           )}
-          <Switch>
-            <PrivateRoute
-              exact
-              path={'/'}
-              component={DashboardRoute}
-            />
-            <PrivateRoute
-              path={'/learn'}
-              component={LearningRoute}
-            />
-            <PublicOnlyRoute
-              path={'/register'}
-              component={RegistrationRoute}
-            />
-            <PublicOnlyRoute
-              path={'/login'}
-              component={LoginRoute}
-            />
-            <Route
-              component={NotFoundRoute}
-            />
-          </Switch>
+          <LanguageProvider>
+            <Switch>
+              <PrivateRoute
+                exact
+                path={'/'}
+                component={DashboardRoute}
+              />
+              <PrivateRoute
+                path={'/learn'}
+                component={LearningRoute}
+              />
+              <PublicOnlyRoute
+                path={'/register'}
+                component={RegistrationRoute}
+              />
+              <PublicOnlyRoute
+                path={'/login'}
+                component={LoginRoute}
+              />
+              <Route
+                component={NotFoundRoute}
+              />
+            </Switch>
+          </LanguageProvider>
         </main>
       </div>
     );
