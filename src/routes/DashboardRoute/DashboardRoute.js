@@ -17,7 +17,7 @@ class DashboardRoute extends Component {
     // ]
   }
 
-  static contextType = LanguageContext;
+  static contextType = LanguageContext
 
   handleStart = (e) => {
     e.preventDefault();
@@ -25,26 +25,25 @@ class DashboardRoute extends Component {
   }
 
   componentDidMount() {
-    this.context.getLanguageAndWords();
+    this.context.getLanguageAndWords()
   }
 
   render() {
-    const { words } = this.context;
+    const { words } = this.context
 
     return (
       <section>
         <h2>Studying {this.context.language.name}</h2>
+        <span className='error'>{this.context.error}</span>
         <button onClick={this.handleStart}>Start practicing</button>
-        <p>Total score: {this.context.getTotalScore()}</p>
+        <p>Total score: {this.context.language.total_score}</p>
         <h3>Words to practice:</h3>
         {words && words.map((word) =>
-          <div key={word.id}>
-            <p>
-              <span>{word.original}</span>
-              <span className='success'>correct answer count: {word.correct_count}</span>
-              <span className='fail'>incorrect answer count: {word.incorrect_count}</span>
-            </p>
-          </div>
+          <p key={word.id}>
+            <span>{word.original}</span>
+            <span className='success'>correct answer count: {word.correct_count}</span>
+            <span className='fail'>incorrect answer count: {word.incorrect_count}</span>
+          </p>
         )}
       </section>
     );
