@@ -5,8 +5,11 @@ const LanguageContext = React.createContext({
   getLanguageAndWords: () => { },
   language: {},
   words: [],
-  getNextWord: () => { },
+  getFirstWord: () => { },
+  finished: {}, // the question that was just answered and evaluated
+  updateQuestion: () => { },
   question: {},
+  clearFinished: () => { },
   error: null
 })
 
@@ -16,6 +19,7 @@ export class LanguageProvider extends Component {
   state = {
     language: {},
     words: [],
+    finished: {},
     question: {},
     error: null
   };
@@ -23,8 +27,6 @@ export class LanguageProvider extends Component {
   getLanguageAndWords = () => {
     // clear error
     this.setState({ error: null })
-    // return if already fetched language and words
-    if (this.state.language.id != null) return
 
     LanguageApiService.getLanguageAndWords()
       .then(({ language, words }) => {
@@ -33,22 +35,55 @@ export class LanguageProvider extends Component {
       .catch(({ error }) => this.setState({ error }))
   }
 
-  getNextWord = () => {
-    // clear error
-    this.setState({ error: null })
+  getFirstWord = () => {
+    // clear error and last finished question
+    this.setState({ error: null, finished: {} })
+    console.log('getFirstWord');
 
-    LanguageApiService.getNextWord()
-      .then(({ totalScore, ...question }) => {
+    LanguageApiService.getFirstWord()
+      .then((question) => {
         this.setState({
           question,
-          language: {
-            ...this.state.language,
-            total_score: totalScore
-          },
           error: null
         });
       })
       .catch(({ error }) => this.setState({ error }))
+  }
+
+  updateQuestion = (finished, question) => {
+    let keys = ['nextWord', 'wordCorrectCount', 'wordIncorrectCount', 'totalScore']
+    for (const key of keys)
+      if (question[key] == null)
+        throw new Error('Server error. Got back invalid values.')
+    keys = ['answer', 'isCorrect']
+    for (const key of keys)
+      if (finished[key] == null)
+        throw new Error('Server error. Got back invalid values.')
+
+    // correct and incorrect counts for finished question
+    let wordCorrectCount = this.state.question.wordCorrectCount;
+    let wordIncorrectCount = this.state.question.wordIncorrectCount;
+    wordCorrectCount = finished.isCorrect ? wordCorrectCount + 1 : wordCorrectCount;
+    wordIncorrectCount = !finished.isCorrect ? wordIncorrectCount + 1 : wordIncorrectCount;
+
+    finished = {
+      ...finished,
+      original: this.state.question.nextWord,
+      wordCorrectCount,
+      wordIncorrectCount,
+    }
+
+    console.log('finished', finished, 'question', question)
+
+    this.setState({
+      finished,
+      question,
+      error: null
+    })
+  }
+
+  clearFinished = () => {
+    this.setState({ finished: {} })
   }
 
   render() {
@@ -56,8 +91,11 @@ export class LanguageProvider extends Component {
       getLanguageAndWords: this.getLanguageAndWords,
       language: this.state.language,
       words: this.state.words,
-      getNextWord: this.getNextWord,
+      getFirstWord: this.getFirstWord,
+      finished: this.state.finished,
+      updateQuestion: this.updateQuestion,
       question: this.state.question,
+      clearFinished: this.clearFinished,
       error: this.state.error
     }
 

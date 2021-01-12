@@ -35,15 +35,15 @@ class DashboardRoute extends Component {
       <section>
         <h2>Studying {this.context.language.name}</h2>
         <span className='error'>{this.context.error}</span>
-        <button onClick={this.handleStart}>Start practicing</button>
-        <p>Total score: {this.context.language.total_score}</p>
-        <h3>Words to practice:</h3>
+        <a href='/learn'>Start practicing</a>
+        <p>Total correct answers: {this.context.language.total_score}</p>
+        <h3>Words to practice</h3>
         {words && words.map((word) =>
-          <p key={word.id}>
-            <span>{word.original}</span>
+          <li key={word.id}>
+            <h4>{word.original}</h4>
             <span className='success'>correct answer count: {word.correct_count}</span>
             <span className='fail'>incorrect answer count: {word.incorrect_count}</span>
-          </p>
+          </li>
         )}
       </section>
     );

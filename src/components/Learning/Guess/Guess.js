@@ -1,24 +1,30 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+
 import { Input, Label } from '../../Form/Form'
 import Button from '../../Button/Button'
 import LanguageApiService from '../../../services/language-api-service'
 
 class Guess extends Component {
+  static defaultProps = {
+    updateQuestion: () => { }
+  }
+
   state = { error: null }
 
   inputRef = React.createRef()
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const guess = e.target.value
+    const { guess } = e.target
 
     this.setState({ error: null })
-
-    LanguageApiService.submitGuess(guess)
-      // .then(res => {
-      //   this.context
-      //   this.props
-      // })
+    LanguageApiService.guessAndReturnNext(guess.value)
+      .then(({ answer, isCorrect, ...question }) => {
+        const finished = { answer, isCorrect, guess: guess.value };
+        guess.value = ''
+        this.props.updateQuestion(finished, question)
+      })
       .catch(({ error }) => this.setState({ error }))
   }
 
@@ -33,9 +39,6 @@ class Guess extends Component {
         className='guess-form'
         onSubmit={this.handleSubmit}
       >
-        <div role='error'>
-          {error && <p>{error}</p>}
-        </div>
         <div>
           <Label htmlFor='learn-guess-input'>
             What's the translation for this word?
@@ -46,6 +49,9 @@ class Guess extends Component {
             name='guess'
             required
           />
+          <div role='alert'>
+            {error && <p>{error}</p>}
+          </div>
         </div>
         <Button type='submit'>
           Submit your answer
@@ -53,6 +59,10 @@ class Guess extends Component {
       </form>
     )
   }
+}
+
+Guess.propTypes = {
+  updateQuestion: PropTypes.func.isRequired
 }
 
 export default Guess
