@@ -20,7 +20,7 @@ class NextWord extends Component {
           <p className='info'>Your total score is: {this.props.totalScore}</p>
         </div>
         <Guess updateQuestion={this.props.updateQuestion} />
-        <p className='info'>
+        <p className='w-80 txt-center'>
           <span className='success break'>
             You have answered this word correctly {this.props.wordCorrectCount} times.
           </span>

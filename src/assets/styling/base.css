@@ -1,12 +1,12 @@
 @import './variables.css';
 
 a:link {
-  color: rgb(70, 117, 205);
+  color:#2D57A4;
   text-decoration: none;
 }
 
 a:visited {
-   color: rgb(70, 117, 205);
+   color:#2D57A4;
 }
 
 a:hover {
@@ -86,6 +86,10 @@ input:focus {
 
 .m-b-1 {
   margin-bottom: 1rem;
+}
+
+.txt-center {
+  text-align: center;
 }
 
 .w-80 {

@@ -27,11 +27,11 @@ class Feedback extends Component {
           <p>Your total score is: {this.props.totalScore}</p>
         </div>
         <div className='DisplayFeedback' role='document'>
-          <p className='info'>
+          <p className='info w-80 txt-center m-auto'>
             The correct translation for {this.props.original} was {this.props.answer} and you chose {this.props.guess}!
           </p>
         </div>
-        <p>
+        <p className='w-80 txt-center'>
           <span className='success break'>
             You have answered this word correctly {this.props.wordCorrectCount} times.
           </span>

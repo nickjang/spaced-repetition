@@ -2,7 +2,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(70, 117, 205);
+  background-color: #2D57A4;
 }
 
 header span {
@@ -19,12 +19,12 @@ header span {
 }
 
 header a:link {
-  color: lightblue;
+  color: rgb(198, 237, 252);
   text-decoration: none;
 }
 
 header a:visited {
-   color: lightblue;
+  color: rgb(198, 237, 252);
 }
 
 @media all and (min-width: 450px) {

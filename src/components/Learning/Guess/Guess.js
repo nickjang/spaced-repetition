@@ -35,7 +35,7 @@ class Guess extends Component {
     const { error } = this.state
     return (
       <form
-        className='Guess'
+        className='Guess txt-center'
         onSubmit={this.handleSubmit}
       >
         <Label htmlFor='learn-guess-input'>
@@ -53,7 +53,7 @@ class Guess extends Component {
             Submit your answer
           </Button>
           <div role='alert' className='break'>
-            {error && <p>{error}</p>}
+            {error && <p className='error'>{error}</p>}
           </div>
         </div>
       </form>
