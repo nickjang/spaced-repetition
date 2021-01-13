@@ -1,0 +1,29 @@
+.account-form {
+  width: fit-content;
+  text-align: center;
+  max-width: fit-content;
+  margin: 2rem auto auto auto;
+}
+
+.account-input {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.account-label {
+  text-align: left;
+  margin: auto 8px auto 0px;
+}
+
+@media all and (min-width: 375px) {
+  .main-input {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .account-input {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

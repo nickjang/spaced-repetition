@@ -14,14 +14,14 @@ class NextWord extends Component {
   render() {
     return (
       <>
-        <h2>Translate the word:</h2>
+        <h2 className='inline'>Translate the word:</h2>
         <span>{this.props.nextWord}</span>
         <div className='DisplayScore' role='document'>
-          <p>Your total score is: {this.props.totalScore}</p>
+          <p className='info'>Your total score is: {this.props.totalScore}</p>
         </div>
         <Guess updateQuestion={this.props.updateQuestion} />
-        <p>
-          <span className='success'>
+        <p className='info'>
+          <span className='success break'>
             You have answered this word correctly {this.props.wordCorrectCount} times.
           </span>
           <span className='fail'>

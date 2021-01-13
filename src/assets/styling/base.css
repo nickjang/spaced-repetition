@@ -1,0 +1,123 @@
+@import './variables.css';
+
+a:link {
+  color: rgb(70, 117, 205);
+  text-decoration: none;
+}
+
+a:visited {
+   color: rgb(70, 117, 205);
+}
+
+a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+a:active {
+  color: darkblue
+}
+
+input, button {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+input:focus {
+  border: 1px solid var(--color-black);
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.al-center {
+  align-items: center;
+}
+
+.break {
+  display: block;
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
+
+.h-fit-content {
+  height: fit-content;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.m-t-auto {
+  margin-top: auto;
+}
+
+.m-b-auto {
+  margin-bottom: auto;
+}
+
+.m-t-0 {
+  margin-top: 0rem;
+}
+
+.m-t-1 {
+  margin-top: 1rem;
+}
+
+.m-r-1 {
+  margin-right: 1rem;
+}
+
+.m-r-2 {
+  margin-right: 2rem;
+}
+
+.m-l-2 {
+  margin-left: 2rem;
+}
+
+.m-b-1 {
+  margin-bottom: 1rem;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.success {
+  color: var(--success-color);
+}
+
+.fail, .error {
+  color: var(--fail-color);
+}
+
+.info {
+  color: var(--info-color);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  border: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: lightgray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

@@ -1,0 +1,46 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(70, 117, 205);
+}
+
+header span {
+  color: white;
+}
+
+.header-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-links :first-child {
+  margin-right: 1rem;
+}
+
+header a:link {
+  color: lightblue;
+  text-decoration: none;
+}
+
+header a:visited {
+   color: lightblue;
+}
+
+@media all and (min-width: 450px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  header h1 {
+    margin-left: 2rem;
+  }
+
+  header .header-links {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 2rem;
+  }
+}

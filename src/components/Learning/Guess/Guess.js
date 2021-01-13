@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-
 import { Input, Label } from '../../Form/Form'
 import Button from '../../Button/Button'
 import LanguageApiService from '../../../services/language-api-service'
@@ -36,26 +35,27 @@ class Guess extends Component {
     const { error } = this.state
     return (
       <form
-        className='guess-form'
+        className='Guess'
         onSubmit={this.handleSubmit}
       >
-        <div>
-          <Label htmlFor='learn-guess-input'>
-            What's the translation for this word?
-          </Label>
+        <Label htmlFor='learn-guess-input'>
+          What's the translation for this word?
+        </Label>
+        <div className='m-t-1'>
           <Input
+            className='inline'
             ref={this.inputRef}
             id='learn-guess-input'
             name='guess'
             required
           />
-          <div role='alert'>
+          <Button type='submit'>
+            Submit your answer
+          </Button>
+          <div role='alert' className='break'>
             {error && <p>{error}</p>}
           </div>
         </div>
-        <Button type='submit'>
-          Submit your answer
-        </Button>
       </form>
     )
   }

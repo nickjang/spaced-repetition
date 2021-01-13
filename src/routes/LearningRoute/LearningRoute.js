@@ -43,7 +43,7 @@ class LearningRoute extends Component {
     return (
       <>
         <span className='error'>{this.context.error}</span>
-        <section>
+        <section className='flex-column al-center'>
           {page}
         </section>
       </>

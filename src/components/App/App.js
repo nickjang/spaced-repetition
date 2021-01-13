@@ -8,8 +8,9 @@ import LoginRoute from '../../routes/LoginRoute/LoginRoute'
 import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import LearningRoute from '../../routes/LearningRoute/LearningRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
-import './App.css'
 import { LanguageProvider } from '../../contexts/LanguageContext'
+import './App.css'
+import '../../assets/styling/base.css'
 
 export default class App extends Component {
   state = { hasError: false }

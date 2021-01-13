@@ -41,13 +41,14 @@ class RegistrationForm extends Component {
     const { error } = this.state
     return (
       <form
+        className='RegistrationForm w-fit-content m-auto'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
           {error && <p>{error}</p>}
         </div>
-        <div>
-          <Label htmlFor='registration-name-input'>
+        <div className='account-input'>
+          <Label htmlFor='registration-name-input' className='account-label'>
             Enter your name<Required />
           </Label>
           <Input
@@ -57,8 +58,8 @@ class RegistrationForm extends Component {
             required
           />
         </div>
-        <div>
-          <Label htmlFor='registration-username-input'>
+        <div className='account-input m-t-1'>
+          <Label htmlFor='registration-username-input' className='account-label'>
             Choose a username<Required />
           </Label>
           <Input
@@ -67,8 +68,8 @@ class RegistrationForm extends Component {
             required
           />
         </div>
-        <div>
-          <Label htmlFor='registration-password-input'>
+        <div className='account-input m-t-1'>
+          <Label htmlFor='registration-password-input' className='account-label'>
             Choose a password<Required />
           </Label>
           <Input
@@ -79,11 +80,11 @@ class RegistrationForm extends Component {
           />
         </div>
         <footer>
-          <Button type='submit'>
+          <Button type='submit' className='m-t-1'>
             Sign up
           </Button>
           {' '}
-          <Link to='/login'>Already have an account?</Link>
+          <Link to='/login' className='break m-t-1'>Already have an account?</Link>
         </footer>
       </form>
     )
