@@ -7,6 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "classnames": "^2.2.6",
+    "cross-env": "^7.0.3",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
@@ -18,6 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "vercel --prod",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },

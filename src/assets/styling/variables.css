@@ -1,5 +1,5 @@
 :root {
-  --success-color: green;
-  --fail-color: red;
-  --info-color: darkgray;
+  --success-color: #005700;
+  --fail-color: #B30000;
+  --info-color: #595959;
 }

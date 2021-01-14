@@ -101,7 +101,10 @@ input:focus {
 }
 
 .fail, .error {
+  max-width: fit-content;
   color: var(--fail-color);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .info {

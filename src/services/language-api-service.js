@@ -3,7 +3,7 @@ import TokenService from './token-service';
 
 const LanguageApiService = {
   getLanguageAndWords() {
-    return fetch(`${config.API_ENDPOINT}/language`, {
+    return fetch(`${config.REACT_APP_API_BASE}/language`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }
@@ -16,7 +16,7 @@ const LanguageApiService = {
   },
 
   getFirstWord() {
-    return fetch(`${config.API_ENDPOINT}/language/head`, {
+    return fetch(`${config.REACT_APP_API_BASE}/language/head`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }
@@ -29,7 +29,7 @@ const LanguageApiService = {
   },
 
   guessAndReturnNext(guess) {
-    return fetch(`${config.API_ENDPOINT}/language/guess`, {
+    return fetch(`${config.REACT_APP_API_BASE}/language/guess`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

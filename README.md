@@ -1,47 +1,67 @@
-# Spaced Repetition Capstone
+# Spaced Repetition
 
-## Setup
+An application for learning french words using spaced repetition as the quizzing method. Implements a linked list and sorting algorithm.
 
-To setup the application
+This application was written using React, Node.js, PostgreSQL.
 
-1. Fork and clone the project to your machine
-2. `npm install`. This will also install the application *Cypress.io* for running browser integration tests
+[site]: https://spaced-repetition-red.vercel.app/
 
-The project expects you have the Spaced repetition API project setup and running on http://localhost:8000.
+## Table of contents
 
-Find instructions to setup the API here https://github.com/Thinkful-Ed/spaced-repetition-api.
+- [Demo](#demo)
+- [Application](#application)
+- [API](#api)
+- [Technologies](#technologies)
+- [Acknowledgments](#acknowledgments)
+- [Links](#links)
 
-## Running project
+## Demo
 
-This is a `create-react-app` project so `npm start` will start the project in development mode with hot reloading by default.
+<img src="./src/assets/images/spaced-repetition.gif" align="middle" alt="A live demo of using the application from creating an account to viewing the dashboard to being quizzed and getting feeback." width="575">
 
-## Running the tests
+A demo of creating an account -> viewing the dashboard -> quizzing -> getting feedback.
 
-This project uses [Cypress IO](https://docs.cypress.io) for integration testing using the Chrome browser.
+## Application
 
-Cypress has the following expectations:
+Try learning french words using this [application][site] that makes use of the spaced repetition method! You'll need to create an account to start learning. When you log in, you'll be shown your dashboard, which will contain the words to learn, correct and incorrect counts for each word, and a total score. Click 'Start practicing' to start learning.
 
-- You have cypress installed (this is a devDependency of the project)
-- You have your application running at http://localhost:3000.
-  - You can change the address of this expectation in the `./cypress.json` file.
-- Your `./src/config.js` is using http://localhost:8000/api as the `API_ENDPOINT`
+On the learning page, you can guess the english translation of the word and recieve feedback. You can also see your total score and the correct and incorrect counts for the word you're viewing. The next word you are quizzed on is given based on whether you're guess for it was correct or incorrect. If you guess incorrectly, you'll be quizzed on it again in two turns. Each consecutive time you guess a word correctly, it'll be sent further down the line, so you'll see it less often (depending on how you do on the other words).
 
-To start the tests run the command:
+## API
 
-```bash
-npm run cypress:open
-```
+Base URL: `https://nickjang-spaced-repetition.herokuapp.com/api`
 
-On the first run of this command, the cypress application will verify its install. Any other runs after this, the verification will be skipped.
+- `/language` Endpoint 
+	- GET
+		- `/language`
+			- Get user's language and language words.
+		- `/language/head`
+			- Get next word (first word in list) to quiz user the word's correct/incorrect counts, and the user's total score.
+	- POST
+		- `/language/guess`
+			- Send the user's guess, and get back result, answer, next word, next word's correct/incorrect counts, and user's total score.
+- `/user` Enpoint
+	- POST 
+		- `/user`
+			- Create a new user, given a username, password, and name.
+- `/auth` Endpoint
+	- POST
+		- `/auth/token`
+			- Send user's username and passsword, and get JWT.
+		- `/auth/put`
+			- Refresh a user's JWT.
 
-The command will open up the Cypress application which reads tests from the `./cypress/integration/` directory. You can then run individual tests by clicking on the file names or run all tests by clicking the "run all tests" button in the cypress GUI.
+[GitHub page](https://github.com/nickjang/spaced-repetition-api) for the server.
 
-Tests will assert against your running localhost client application.
+## Technologies
 
-You can also start all of the tests in the command line only (not using the GUI) by running the command:
+This application was written using React, Node.js, Express, PostgreSQL, Mocha/Chai, JWT, and CSS.
 
-```bash
-npm run cypress:run
-```
+## Acknowledgments
 
-This will save video recordings of the test runs in the directory `./cypress/videos/`.
+Thank you to [Thinkful](https://thinkful.com/), where this capstone was completed.
+
+## Links
+
+* [The spaced repetition application][site]
+* [The server's GitHub page](https://github.com/nickjang/spaced-repetition-api)
