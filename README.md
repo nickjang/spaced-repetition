@@ -23,9 +23,9 @@ A demo of creating an account -> viewing the dashboard -> quizzing -> getting fe
 
 ## Application
 
-Try learning french words using this [application][site] that makes use of the spaced repetition method! You'll need to create an account to start learning. When you log in, you'll be shown your dashboard, which will contain the words to learn, correct and incorrect counts for each word, and a total score. Click 'Start practicing' to start learning.
+Try learning french words using this [application][site] that makes use of the spaced repetition method! You'll need to create an account to start learning. When you log in, you'll be shown your dashboard, which will contain the words to learn, correct and incorrect counts for the word, and a total score. Click 'Start practicing' to start learning.
 
-On the learning page, you can guess the english translation of the word and recieve feedback. You can also see your total score and the correct and incorrect counts for the word you're viewing. The next word you are quizzed on is given based on whether you're guess for it was correct or incorrect. If you guess incorrectly, you'll be quizzed on it again in two turns. Each consecutive time you guess a word correctly, it'll be sent further down the line, so you'll see it less often (depending on how you do on the other words).
+On the learning page, you can guess the english translation of the word and recieve feedback. You can also see your total score and the correct and incorrect counts for the word you're viewing. The next word you are quizzed on is given based on whether your guess for it was correct or incorrect. If you guess incorrectly, you'll be quizzed on it again in two turns. Guessing a particular word correctly consecutively, sends the word further down the line, so you'll see it less often (depending on how you do on the other words).
 
 ## API
 
@@ -36,20 +36,20 @@ Base URL: `https://nickjang-spaced-repetition.herokuapp.com/api`
 		- `/language`
 			- Get user's language and language words.
 		- `/language/head`
-			- Get next word (first word in list) to quiz user the word's correct/incorrect counts, and the user's total score.
+			- Get next word (first word in list) to quiz user, the word's correct/incorrect counts, and the user's total score.
 	- POST
 		- `/language/guess`
-			- Send the user's guess, and get back result, answer, next word, next word's correct/incorrect counts, and user's total score.
+			- Send user's guess, and get back result, answer, next word, next word's correct/incorrect counts, and user's total score.
 - `/user` Enpoint
 	- POST 
 		- `/user`
-			- Create a new user, given a username, password, and name.
+			- Create new user, given a username, password, and name.
 - `/auth` Endpoint
 	- POST
 		- `/auth/token`
 			- Send user's username and passsword, and get JWT.
 		- `/auth/put`
-			- Refresh a user's JWT.
+			- Refresh user's JWT.
 
 [GitHub page](https://github.com/nickjang/spaced-repetition-api) for the server.
 
