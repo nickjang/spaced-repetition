@@ -9,7 +9,6 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import LearningRoute from '../../routes/LearningRoute/LearningRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import { LanguageProvider } from '../../contexts/LanguageContext'
-import './App.css'
 import '../../assets/styling/base.css'
 
 export default class App extends Component {

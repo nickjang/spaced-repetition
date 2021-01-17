@@ -13,7 +13,7 @@ class LearningRoute extends Component {
   render() {
     const { finished, question, clearFinished, updateQuestion, error } = this.context;
     let page;
-    console.log('learning', finished);
+
     if (finished && finished.isCorrect != null) {
       page = (
         <Feedback

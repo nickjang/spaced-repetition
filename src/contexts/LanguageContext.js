@@ -38,7 +38,6 @@ export class LanguageProvider extends Component {
   getFirstWord = () => {
     // clear error and last finished question
     this.setState({ error: null, finished: {} })
-    console.log('getFirstWord');
 
     LanguageApiService.getFirstWord()
       .then((question) => {
@@ -72,8 +71,6 @@ export class LanguageProvider extends Component {
       wordCorrectCount,
       wordIncorrectCount,
     }
-
-    console.log('finished', finished, 'question', question)
 
     this.setState({
       finished,
